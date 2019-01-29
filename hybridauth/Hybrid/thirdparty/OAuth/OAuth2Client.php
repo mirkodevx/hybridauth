@@ -40,6 +40,8 @@ class OAuth2Client
   public $http_code             = "";
   public $http_info             = "";
   protected $response           = null;
+	
+  public $is_wp			= false;
 
   //--
 
@@ -132,7 +134,9 @@ class OAuth2Client
       $url = $this->api_base_url . $url;
     }
 
+	  if(!$this->is_wp){
     $parameters[$this->sign_token_name] = $this->access_token;
+	  }
     $response = null;
 
     switch( $method ){
